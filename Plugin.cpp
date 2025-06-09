@@ -5,6 +5,7 @@
 #include "llvm/Passes/PassPlugin.h"
 #include "llvm/Support/FormatVariadic.h"
 
+#include "string/StringObfuscation.h"
 #include "bogus/BogusControlFlow.h"
 #include "flattening/Flattening.h"
 #include "split/SplitBasicBlocks.h"
@@ -38,6 +39,10 @@ bool addPassWithName(FunctionPassManager &FPM, StringRef &passName) {
 }
 
 bool addPassWithName(ModulePassManager &MPM, StringRef &passName) {
+  if (passName == "string") {
+    MPM.addPass(StringObfuscatorPass()); 
+    return true;
+  }
   return false;
 }
 
