@@ -50,7 +50,9 @@ target_include_directories(LLVMObfuscator PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 #Add if needed
 #target_link_libraries(LLVMObfuscator LLVMCore LLVMSupport)
 #target_link_libraries(LLVMObfuscator LLVMCore LLVMSupport LLVMInterpreter)
-target_link_libraries(LLVMObfuscator LLVMCore LLVMSupport LLVMAnalysis LLVMTransformUtils)
+#target_link_libraries(LLVMObfuscator LLVMCore LLVMSupport LLVMAnalysis LLVMTransformUtils)
+target_link_libraries(LLVMObfuscator LLVM)
+
 
 option(BUILD_DUMMY "Build dummy plugin" OFF)
 if(BUILD_DUMMY)
